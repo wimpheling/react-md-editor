@@ -14,6 +14,7 @@ var MarkdownEditor = React.createClass({
 
 	propTypes: {
 		onChange: React.PropTypes.func,
+		onBlur: React.PropTypes.func,
 		options: React.PropTypes.object,
 		path: React.PropTypes.string,
 		value: React.PropTypes.string,
@@ -68,6 +69,7 @@ var MarkdownEditor = React.createClass({
 	},
 
 	focusChanged (focused) {
+		!focused && this.props.onBlur && this.props.onBlur()
 		this.setState({ isFocused: focused });
 	},
 
